@@ -1,0 +1,412 @@
+/* إعدادات عامة */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Cairo', sans-serif; 
+}
+body { 
+    background-color: #f4f4f4; 
+    color: #333; 
+    padding-bottom: 100px; 
+    overflow-x: hidden;
+}
+
+.container { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+/* --- تصميم الغلاف (زي الفيسبوك) --- */
+.cover-header {
+    position: relative;
+    width: 100%;
+    height: 400px; /* ارتفاع الغلاف، تقدر تكبره أو تصغره */
+    background-color: #5e0b0b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 5px solid #d4af37;
+}
+
+/* صورة الغلاف */
+.cover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* بتخلي الصورة تملا المساحة من غير ما تتشوه */
+    z-index: 1;
+}
+
+
+
+/* حاوية اللوجو والكلام */
+.header-content {
+    position: relative;
+    z-index: 3; /* عشان يبقى فوق طبقة الشفافية */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+/* اللوجو */
+.logo-container {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #d4af37;
+    background-color: #111;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* النصوص */
+.restaurant-name {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #d4af37;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+    margin: 0;
+}
+
+.slogan {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+    margin: 0;
+}
+
+.address {
+    font-size: 0.95rem;
+    color: #222;
+    font-weight: 700;
+    background: #d4af37;
+    padding: 5px 20px;
+    border-radius: 30px;
+    margin-top: 260px;
+}
+
+/* عشان نخلي شكل الموقع حلو على الموبايل */
+@media (max-width: 768px) {
+    .cover-header { height: 350px; }
+    .logo-container { width: 120px; height: 120px; }
+    .restaurant-name { font-size: 2.2rem; }
+}
+.logo-container {
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 4px solid #d4af37;
+    padding: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.restaurant-name {
+    font-family: 'Tajawal', sans-serif; /* خط عريض */
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 5px;
+}
+
+.slogan {
+    font-size: 1.2rem;
+    color: #ddd;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.address {
+    font-size: 0.95rem;
+    color: #fdfcfc;
+    background: rgba(255,255,255,0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* --- شريط الأقسام (تثبيت) --- */
+.categories-nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 15px 10px; /* زيادة البادينج شوية عشان يبقى شكله حلو وهو ثابت */
+    scrollbar-width: none; /* إخفاء شريط التمرير */
+    
+    /* الكود ده هو اللي بيثبت الشريط */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #f4f4f4; /* نفس لون خلفية الموقع عشان يغطي على الكروت */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* ظل خفيف تحت الشريط */
+}
+
+.categories-nav::-webkit-scrollbar { display: none; }
+.cat-btn {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.cat-btn:hover {
+    border-color: #c82333;
+    color: #c82333;
+}
+
+.cat-btn.active {
+    background-color: #c82333;
+    color: #fff;
+    border-color: #c82333;
+    box-shadow: 0 4px 10px rgba(200, 35, 51, 0.3);
+}
+
+/* --- شبكة الكروت --- */
+.menu-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 15px; 
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* تصميم كارت الصنف */
+.item-card { 
+    background-color: #fff; 
+    border-radius: 12px; 
+    padding: 18px 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04); 
+    border: 1px solid #eee;
+    transition: transform 0.2s, box-shadow 0.2s; 
+}
+.item-card:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+}
+
+.item-info { flex: 1; padding-left: 10px; }
+.item-name { font-size: 1.1rem; font-weight: 700; color: #222; margin-bottom: 8px; line-height: 1.4;}
+.item-price { font-size: 1.25rem; color: #c82333; font-weight: 800; }
+
+.add-btn { 
+    background-color: #111; 
+    color: #fff; 
+    border: none; 
+    padding: 10px 16px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 0.95rem; 
+    font-weight: 700; 
+    transition: background 0.3s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.add-btn:hover { background-color: #333; }
+.add-btn:active { transform: scale(0.95); }
+
+/* --- شريط السلة السفلي (تعديل للموبايل) --- */
+.cart-container { 
+    position: fixed; 
+    bottom: 0; left: 0; right: 0; 
+    background-color: #fff; 
+    border-top: 2px solid #eee; 
+    padding: 10px 15px; /* قللنا الحواف شوية */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    z-index: 1000; 
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+}
+
+.cart-info { 
+    font-size: 0.95rem; /* صغرنا الخط شوية */
+    font-weight: 700; 
+    color: #333; 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-total-price { 
+    color: #c82333; 
+    font-size: 1.1rem; /* صغرنا السعر شوية */
+    font-weight: 800;
+}
+
+.cart-btn { 
+    background-color: #c82333; 
+    color: #fff; 
+    border: none; 
+    padding: 8px 15px; /* صغرنا الزرار */
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 0.9rem; 
+    font-weight: 700; 
+    transition: background 0.3s; 
+    white-space: nowrap; /* عشان الكلام ميتقطعش */
+}
+
+.cart-btn:hover { background-color: #a01b28; }
+
+/* --- تخصيص إضافي للموبايل فقط --- */
+@media (max-width: 480px) {
+    .cart-container {
+        flex-direction: row; /* يفضلوا جنب بعض */
+        padding: 8px 10px;
+    }
+    
+    .cart-info {
+        font-size: 0.85rem; /* خط أصغر للموبايل */
+    }
+    
+    .cart-total-price {
+        font-size: 1rem;
+    }
+
+    .cart-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        border-radius: 6px;
+    }
+}
+.cart-btn:hover { background-color: #a01b28; }
+
+/* --- نافذة السلة (Modal) --- */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
+.modal-content { background: #fff; color: #333; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2);}
+.modal-header { display: flex; justify-content: space-between; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
+.modal-header h2 { font-size: 1.4rem; font-weight: 800;}
+.close-btn { background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #888; line-height: 1;}
+
+.cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 12px 0; }
+.cart-item-info { flex: 1; }
+.cart-item-info strong { font-size: 1.05rem; color: #222;}
+.cart-item-info div { font-size: 0.9rem; color: #c82333; font-weight: 700; margin-top: 3px;}
+.cart-item-controls { display: flex; align-items: center; gap: 10px; }
+.qty-btn { background: #f4f4f4; color: #222; border: 1px solid #ddd; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; font-weight: bold; display: flex; justify-content: center; align-items: center; transition: 0.2s;}
+.qty-btn:hover { background: #ddd; }
+.remove-btn { color: #c82333; background: none; border: none; cursor: pointer; font-size: 1.3rem; margin-right: 5px;}
+
+.customer-form { margin-top: 25px; border-top: 2px dashed #ddd; padding-top: 20px; }
+.customer-form h3 { margin-bottom: 15px; color: #222; font-weight: 800;}
+.customer-form label { font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.95rem;}
+.customer-form input, .customer-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; font-family: 'Cairo', sans-serif; background: #fafafa;}
+.customer-form input:focus, .customer-form textarea:focus { outline: none; border-color: #111; background: #fff;}
+
+.whatsapp-send-btn { width: 100%; background-color: #25D366; color: white; border: none; padding: 15px; border-radius: 8px; font-size: 1.1rem; font-weight: 800; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; transition: 0.3s;}
+.whatsapp-send-btn:hover { background-color: #128C7E; }
+
+.toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: 700; z-index: 3000; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
+
+/* --- تصميم الفوتر والسوشيال ميديا --- */
+.social-footer {
+    background-color: #ffffff; /* خلفية سودة فخمة */
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 3px solid #d4af37; /* خط ذهبي من فوق */
+    margin-bottom: 80px; /* مساحة عشان شريط السلة ميطغطهوش */
+}
+
+.social-footer h3 {
+    color: #5e0b0b;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    border: #000 solid 1px;
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+/* التأثيرات عند وضع الماوس (Hover) */
+.social-icon:hover svg {
+    transform: scale(1.2); /* تكبير الأيقونة شوية */
+}
+
+.social-icon.facebook:hover {
+    background-color: #1877F2; /* لون فيسبوك */
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(24, 119, 242, 0.6);
+}
+
+.social-icon.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); /* تدرج ألوان انستجرام */
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(220, 39, 67, 0.6);
+}
+
+.social-icon.tiktok:hover {
+    background-color: #000; /* لون تيك توك */
+    border-color: #25F4EE; /* لون التيك توك المميز */
+    box-shadow: 0 0 15px rgba(37, 244, 238, 0.6);
+    color: #fff;
+}
